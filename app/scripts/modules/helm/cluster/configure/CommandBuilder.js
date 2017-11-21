@@ -49,8 +49,13 @@ module.exports = angular.module('spinnaker.helm.clusterCommandBuilder.service', 
           desired: 0,
           max: 1,
         },
+<<<<<<< HEAD
         namespace: application.namespace,
         region: application.namespace,
+=======
+        namespace: 'sr',
+        region: 'sr',
+>>>>>>> 0d3d9c793... Base UI implementation for Helm clouddriver
       };
 
       // if (application && application.attributes) {
