@@ -16,7 +16,7 @@ var canaryEnabled = process.env.CANARY_ENABLED === 'true';
 window.spinnakerSettings = {
   checkForUpdates: true,
   debugEnabled: debugEnabled,
-  defaultProviders: ['aws', 'gce', 'azure', 'cf', 'kubernetes', 'dcos', 'openstack', 'oraclebmcs', 'ecs'],
+  defaultProviders: ['aws', 'gce', 'azure', 'cf', 'kubernetes', 'dcos', 'openstack', 'oraclebmcs', 'ecs', 'helm'],
   feedbackUrl: feedbackUrl,
   gateUrl: gateHost,
   bakeryDetailUrl: bakeryDetailUrl,
@@ -90,6 +90,11 @@ window.spinnakerSettings = {
         internalDNSNameTemplate: '{{name}}.{{namespace}}.svc.cluster.local',
         instanceLinkTemplate: '{{host}}/api/v1/proxy/namespaces/{{namespace}}/pods/{{name}}',
       },
+    },
+    helm: {
+        defaults: {
+            account: 'helm-account'
+        }
     },
     dcos: {
       defaults: {

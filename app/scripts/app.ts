@@ -21,4 +21,5 @@ module('netflix.spinnaker', [
   require('./modules/dcos/dcos.module.js'),
   APPENGINE_MODULE,
   CANARY_MODULE,
+  require('./modules/helm/helm.module.js'),
 ]);
