@@ -17,7 +17,7 @@ var infrastructureEnabled = process.env.INFRA_ENABLED === 'true' ? true : false;
 window.spinnakerSettings = {
   checkForUpdates: true,
   debugEnabled: debugEnabled,
-  defaultProviders: ['aws', 'gce', 'azure', 'cf', 'kubernetes', 'dcos', 'openstack', 'oraclebmcs', 'ecs'],
+  defaultProviders: ['aws', 'gce', 'azure', 'cf', 'kubernetes', 'dcos', 'openstack', 'oraclebmcs', 'ecs', 'helm'],
   feedbackUrl: feedbackUrl,
   gateUrl: gateHost,
   bakeryDetailUrl: bakeryDetailUrl,
@@ -92,6 +92,11 @@ window.spinnakerSettings = {
         instanceLinkTemplate: '{{host}}/api/v1/proxy/namespaces/{{namespace}}/pods/{{name}}',
         apiPrefix: 'api/v1/proxy/namespaces/kube-system/services/kubernetes-dashboard/#',
       },
+    },
+    helm: {
+        defaults: {
+            account: 'helm-account'
+        }
     },
     dcos: {
       defaults: {
