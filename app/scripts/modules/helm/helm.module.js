@@ -4,6 +4,8 @@ let angular = require('angular');
 
 import { CLOUD_PROVIDER_REGISTRY, DeploymentStrategyRegistry } from '@spinnaker/core';
 
+import './logo/helm.logo.less';
+
 var templates = require.context('./', true, /\.html$/);
 templates.keys().forEach(function(key) {
   templates(key);
@@ -20,7 +22,7 @@ module.exports = angular.module('spinnaker.helm', [
     cloudProviderRegistryProvider.registerProvider('helm', {
       name: 'Helm',
       logo: {
-        path: require('./logo.png'),
+        path: require('./logo/helm.logo.png'),
       },
       serverGroup: {
         transformer: 'helmServerGroupTransformer',
