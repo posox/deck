@@ -18,7 +18,12 @@ module.exports = angular.module('spinnaker.helm.serverGroupCommandBuilder.servic
       return $q.when(command);
     }
 
+    function buildNewServerGroupCommandForPipeline(current, pipeline) {
+      return $q.when(helmClusterCommandBuilder.buildNewClusterCommandForPipeline(current, pipeline));
+    }
+
     return {
       buildNewServerGroupCommand: buildNewServerGroupCommand,
+      buildNewServerGroupCommandForPipeline: buildNewServerGroupCommandForPipeline,
     };
   });

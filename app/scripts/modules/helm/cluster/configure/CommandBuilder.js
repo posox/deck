@@ -10,7 +10,7 @@ module.exports = angular.module('spinnaker.helm.clusterCommandBuilder.service', 
   ACCOUNT_SERVICE
 ])
   .factory('helmClusterCommandBuilder', function (accountService) {
-    function attemptToSetValidCredentials(application, defaultAccount, command) {
+    function attemptToSetValidAccount(application, defaultAccount, command) {
       return accountService.listAccounts('helm').then(function(helmAccounts) {
         var helmAccountNames = _.map(helmAccounts, 'name');
         var firstHelmAccount = null;
@@ -34,7 +34,7 @@ module.exports = angular.module('spinnaker.helm.clusterCommandBuilder.service', 
       const defaultAccount = defaults.account || HelmProviderSettings.defaults.account;
 
       var command = {
-        credentials: defaultAccount,
+        account: defaultAccount,
         application: application.name,
         targetSize: 1,
         cloudProvider: 'helm',
@@ -57,7 +57,7 @@ module.exports = angular.module('spinnaker.helm.clusterCommandBuilder.service', 
       //   command.interestingHealthProviderNames = [];
       // }
 
-      attemptToSetValidCredentials(application, defaultAccount, command);
+      attemptToSetValidAccount(application, defaultAccount, command);
 
       return command;
 
@@ -67,8 +67,21 @@ module.exports = angular.module('spinnaker.helm.clusterCommandBuilder.service', 
 
     }
 
+    function buildNewClusterCommandForPipeline(current, pipeline) {
+      return {
+        strategy: '',
+        viewState: {
+          mode: 'editPipeline',
+          submitButtonLabel: 'Done',
+          requiresTemplateSelection: true,
+          useAutoscaler: false,
+        }
+      };
+    }
+
     return {
       buildNewClusterCommand: buildNewClusterCommand,
       buildClusterCommandFromExisting: buildClusterCommandFromExisting,
+      buildNewClusterCommandForPipeline: buildNewClusterCommandForPipeline,
     };
   });
