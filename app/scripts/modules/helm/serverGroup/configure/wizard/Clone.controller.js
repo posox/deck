@@ -53,6 +53,11 @@ module.exports = angular.module('spinnaker.serverGroup.configure.helm.clone', [
     }
 
     function initializeWizardState() {
+      var mode = serverGroupCommand.viewState.mode;
+      if (mode === 'clone' || mode === 'editPipeline') {
+        v2modalWizardService.markComplete('location');
+      }
+
       wizardSubFormValidation
         .config({ scope: $scope, form: 'form'})
         .register({page: 'location', subForm: 'basicSettings'});
@@ -70,7 +75,10 @@ module.exports = angular.module('spinnaker.serverGroup.configure.helm.clone', [
     };
 
     this.clone = function () {
-      // add integration with pipeline
+      if ($scope.command.viewState.mode === 'editPipeline' || $scope.command.viewState.mode === 'createPipeline') {
+        return $uibModalInstance.close($scope.command);
+      }
+
       $scope.taskMonitor.submit(
         function () {
           // implement action
