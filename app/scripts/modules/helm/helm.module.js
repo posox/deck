@@ -17,6 +17,7 @@ module.exports = angular.module('spinnaker.helm', [
   require('./serverGroup/configure/CommandBuilder.js'),
   require('./serverGroup/configure/configure.helm.module.js'),
   require('./serverGroup/details/details.helm.module.js'),
+  require('./serverGroup/paramsMixin.js'),
   require('./serverGroup/transformer.js'),
 ])
   .config(function(cloudProviderRegistryProvider) {
@@ -33,6 +34,7 @@ module.exports = angular.module('spinnaker.helm', [
         configurationService: 'helmServerGroupConfigurationService',
         detailsTemplateUrl: require('./serverGroup/details/details.html'),
         detailsController: 'helmServerGroupDetailsController',
+        paramsMixin: 'helmServerGroupParamsMixin',
       },
     });
   });
