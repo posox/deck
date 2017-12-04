@@ -19,6 +19,7 @@ module.exports = angular.module('spinnaker.serverGroup.configure.helm.clone', [
     $scope.pages = {
       templateSelection: require('./templateSelection.html'),
       basicSettings: require('./basicSettings.html'),
+      values: require('./values.html'),
     };
 
     $scope.title = title;
