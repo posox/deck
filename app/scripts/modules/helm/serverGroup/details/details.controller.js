@@ -12,10 +12,10 @@ import {
 
 module.exports = angular.module('spinnaker.serverGroup.details.helm.controller', [
   require('@uirouter/angularjs').default,
-  require('../configure/configure.helm.module.js'),
+  require('../configure/configure.helm.module.js').name,
   SERVER_GROUP_READER,
   SERVER_GROUP_WRITER,
-  require('../paramsMixin.js'),
+  require('../paramsMixin.js').name,
   SERVER_GROUP_WARNING_MESSAGE_SERVICE,
   CONFIRMATION_MODAL_SERVICE,
 ])

@@ -7,7 +7,7 @@ import { ACCOUNT_SERVICE, NAMING_SERVICE } from '@spinnaker/core';
 module.exports = angular.module('spinnaker.helm.serverGroupCommandBuilder.service', [
   ACCOUNT_SERVICE,
   NAMING_SERVICE,
-  require('../../cluster/cluster.helm.module.js'),
+  require('../../cluster/cluster.helm.module.js').name,
 ])
   .factory('helmServerGroupCommandBuilder', function ($q, accountService, namingService,
                                                       helmClusterCommandBuilder) {
@@ -18,8 +18,8 @@ module.exports = angular.module('spinnaker.helm.serverGroupCommandBuilder.servic
       return $q.when(command);
     }
 
-    function buildNewServerGroupCommandForPipeline(current, pipeline) {
-      return $q.when(helmClusterCommandBuilder.buildNewClusterCommandForPipeline(current, pipeline));
+    function buildNewServerGroupCommandForPipeline() {
+      return $q.when(helmClusterCommandBuilder.buildNewClusterCommandForPipeline());
     }
 
     return {

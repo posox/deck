@@ -13,12 +13,12 @@ templates.keys().forEach(function(key) {
 
 module.exports = angular.module('spinnaker.helm', [
   CLOUD_PROVIDER_REGISTRY,
-  require('./cluster/cluster.helm.module.js'),
-  require('./serverGroup/configure/CommandBuilder.js'),
-  require('./serverGroup/configure/configure.helm.module.js'),
-  require('./serverGroup/details/details.helm.module.js'),
-  require('./serverGroup/paramsMixin.js'),
-  require('./serverGroup/transformer.js'),
+  require('./cluster/cluster.helm.module.js').name,
+  require('./serverGroup/configure/CommandBuilder.js').name,
+  require('./serverGroup/configure/configure.helm.module.js').name,
+  require('./serverGroup/details/details.helm.module.js').name,
+  require('./serverGroup/paramsMixin.js').name,
+  require('./serverGroup/transformer.js').name,
 ])
   .config(function(cloudProviderRegistryProvider) {
     cloudProviderRegistryProvider.registerProvider('helm', {

@@ -9,7 +9,7 @@ module.exports = angular.module('spinnaker.serverGroup.configure.helm.clone', [
   SERVER_GROUP_WRITER,
   V2_MODAL_WIZARD_SERVICE,
   TASK_MONITOR_BUILDER,
-  require('../configuration.service'),
+  require('../configuration.service.js').name,
 ])
   .controller('helmCloneServerGroupController', function($scope, $uibModalInstance, $q, $state,
                                                          serverGroupWriter, v2modalWizardService, taskMonitorBuilder,

@@ -24,5 +24,5 @@ module('netflix.spinnaker', [
   APPENGINE_MODULE,
   CANARY_MODULE,
   KUBERNETES_V2_MODULE,
-  require('./modules/helm/helm.module.js'),
+  require('./modules/helm/helm.module.js').name,
 ]);

@@ -4,10 +4,10 @@ const angular = require('angular');
 import _ from 'lodash';
 
 import { ACCOUNT_SERVICE } from '@spinnaker/core';
-import {HelmProviderSettings} from '../../helm.settings';
+import { HelmProviderSettings } from '../../helm.settings';
 
 module.exports = angular.module('spinnaker.helm.clusterCommandBuilder.service', [
-  ACCOUNT_SERVICE
+  ACCOUNT_SERVICE,
 ])
   .factory('helmClusterCommandBuilder', function (accountService) {
     function attemptToSetValidAccount(application, defaultAccount, command) {
@@ -49,13 +49,8 @@ module.exports = angular.module('spinnaker.helm.clusterCommandBuilder.service', 
           desired: 0,
           max: 1,
         },
-<<<<<<< HEAD
         namespace: application.namespace,
         region: application.namespace,
-=======
-        namespace: 'sr',
-        region: 'sr',
->>>>>>> 0d3d9c793... Base UI implementation for Helm clouddriver
       };
 
       // if (application && application.attributes) {
@@ -68,11 +63,11 @@ module.exports = angular.module('spinnaker.helm.clusterCommandBuilder.service', 
 
     }
 
-    function buildClusterCommandFromExisting(application, existing, mode) {
+//     function buildClusterCommandFromExisting(application, existing, mode) {
+//
+//     }
 
-    }
-
-    function buildNewClusterCommandForPipeline(current, pipeline) {
+    function buildNewClusterCommandForPipeline() {
       return {
         strategy: '',
         viewState: {
@@ -86,7 +81,7 @@ module.exports = angular.module('spinnaker.helm.clusterCommandBuilder.service', 
 
     return {
       buildNewClusterCommand: buildNewClusterCommand,
-      buildClusterCommandFromExisting: buildClusterCommandFromExisting,
+      // buildClusterCommandFromExisting: buildClusterCommandFromExisting,
       buildNewClusterCommandForPipeline: buildNewClusterCommandForPipeline,
     };
   });
