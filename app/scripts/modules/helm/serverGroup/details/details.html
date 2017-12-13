@@ -1,0 +1,59 @@
+<div class="details-panel"
+     ng-class="{ disabled: serverGroup.isDisabled }">
+
+  <div class="header" ng-if="state.loading">
+    <div class="close-button">
+      <a class="btn btn-link"
+         ui-sref="^">
+        <span class="glyphicon glyphicon-remove"></span>
+      </a>
+    </div>
+    <h4 class="text-center">
+      <span us-spinner="{radius:20, width:6, length: 12}"></span>
+    </h4>
+  </div>
+
+  <div class="header" ng-if="!state.loading">
+    <div class="close-button">
+      <a class="btn btn-link"
+         ui-sref="^">
+        <span class="glyphicon glyphicon-remove"></span>
+      </a>
+    </div>
+    <div class="header-text">
+      <cloud-provider-logo provider="serverGroup.type" height="'36px'" width="'36px'"></cloud-provider-logo>
+      <h3 select-on-dbl-click>
+        {{ serverGroup.name }}
+      </h3>
+    </div>
+    <div class="actions" ng-class="{ insight: serverGroup.insightActions.length > 0 }">
+      <div class="dropdown" uib-dropdown dropdown-append-to-body>
+        <button type="button" class="btn btn-sm btn-primary dropdown-toggle" uib-dropdown-toggle>
+          Server Group Actions <span class="caret"></span>
+        </button>
+        <!--TODO: implement actions-->
+        <ul class="dropdown-menu" uib-dropdown-menu role="menu">
+          <li><a href ng-click="ctrl.destroyServerGroup()">Destroy</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="content" ng-if="!state.loading">
+    <h4 class="text-center" ng-if="serverGroup.isDisabled">[SERVER GROUP IS DISABLED]</h4>
+    <server-group-running-tasks-details server-group="serverGroup" application="ctrl.application"></server-group-running-tasks-details>
+    <collapsible-section heading="Server Group Information" expanded="true">
+      <dl class="dl-horizontal dl-flex">
+        <dt>Name</dt>
+        <dd>{{ serverGroup.name }}</dd>
+        <dt>In</dt>
+        <dd><account-tag account="serverGroup.account" pad="right"></account-tag></dd>
+        <dt>Namespace</dt>
+        <dd>{{ serverGroup.region }}</dd>
+        <dt>Chart</dt>
+        <dd>{{ serverGroup.chart }}</dd>
+        <dt>Status</dt>
+        <dd>{{ serverGroup.status }}</dd>
+      </dl>
+    </collapsible-section>
+  </div>
+</div>
