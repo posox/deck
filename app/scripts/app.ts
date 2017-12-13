@@ -8,6 +8,7 @@ import { GOOGLE_MODULE } from '@spinnaker/google';
 import { OPENSTACK_MODULE } from '@spinnaker/openstack';
 import { CANARY_MODULE } from './modules/canary/canary.module';
 import { KUBERNETES_V1_MODULE, KUBERNETES_V2_MODULE } from '@spinnaker/kubernetes';
+import { HELM_MODULE } from '@spinnaker/helm';
 
 module('netflix.spinnaker', [
   CORE_MODULE,
@@ -24,5 +25,5 @@ module('netflix.spinnaker', [
   APPENGINE_MODULE,
   CANARY_MODULE,
   KUBERNETES_V2_MODULE,
-  require('./modules/helm/helm.module.js').name,
+  HELM_MODULE,
 ]);

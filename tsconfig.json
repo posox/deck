@@ -32,7 +32,10 @@
       "amazon": ["amazon/src"],
       "@spinnaker/google": ["google/src"],
       "google/*": ["google/src/*"],
-      "google": ["google/src"]
+      "google": ["google/src"],
+      "@spinnaker/helm": ["helm/src"],
+      "helm/*": ["helm/src/*"],
+      "helm": ["helm/src"]
     },
     "pretty": true,
     "removeComments": true,

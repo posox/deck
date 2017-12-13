@@ -1,17 +1,17 @@
-'use strict';
+import { module } from 'angular';
 
-let angular = require('angular');
-
-import { CLOUD_PROVIDER_REGISTRY, DeploymentStrategyRegistry } from '@spinnaker/core';
+import { CLOUD_PROVIDER_REGISTRY, DeploymentStrategyRegistry, CloudProviderRegistry } from '@spinnaker/core';
 
 import './logo/helm.logo.less';
 
-var templates = require.context('./', true, /\.html$/);
+// load all templates into the $templateCache
+const templates = require.context('./', true, /\.html$/);
 templates.keys().forEach(function(key) {
   templates(key);
 });
 
-module.exports = angular.module('spinnaker.helm', [
+export const HELM_MODULE = 'spinnaker.helm';
+module(HELM_MODULE, [
   CLOUD_PROVIDER_REGISTRY,
   require('./cluster/cluster.helm.module.js').name,
   require('./serverGroup/configure/CommandBuilder.js').name,
@@ -20,7 +20,7 @@ module.exports = angular.module('spinnaker.helm', [
   require('./serverGroup/paramsMixin.js').name,
   require('./serverGroup/transformer.js').name,
 ])
-  .config(function(cloudProviderRegistryProvider) {
+  .config((cloudProviderRegistryProvider: CloudProviderRegistry) => {
     cloudProviderRegistryProvider.registerProvider('helm', {
       name: 'Helm',
       logo: {
