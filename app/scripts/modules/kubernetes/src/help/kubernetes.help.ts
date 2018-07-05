@@ -217,6 +217,7 @@ const helpContents: { [key: string]: string } = {
     <p><b>json</b>: <a href="https://tools.ietf.org/html/rfc6902" target="_blank">JSON Patch, RFC 6902</a></p>
     <p><b>merge</b>: <a href="https://tools.ietf.org/html/rfc7386" target="_blank">JSON Merge Patch, RFC 7386</a></p>
   `,
+  'kubernetes.manifest.namespace': 'The namespace you have configured with the above selected account.',
 };
 
 Object.keys(helpContents).forEach(key => HelpContentsRegistry.register(key, helpContents[key]));

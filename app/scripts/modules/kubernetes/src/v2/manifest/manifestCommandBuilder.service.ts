@@ -18,6 +18,7 @@ export interface IKubernetesManifestCommand {
   manifestArtifactAccount?: string;
   source?: string;
   versioned?: boolean;
+  namespace?: string;
 }
 
 export interface IKubernetesManifestCommandMetadata {

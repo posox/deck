@@ -26,6 +26,12 @@ class KubernetesManifestBasicSettingsComponent implements IComponentOptions {
                  name="application"
                  ng-model="ctrl.command.moniker.app"/>
         </stage-config-field>
+        <stage-config-field label="Namespace *" help-key="kubernetes.manifest.namespace">
+          <input type="text"
+                 class="form-control input-sm"
+                 name="namespace"
+                 ng-model="ctrl.command.namespace"/>
+        </stage-config-field>
       </ng-form>
   `;
 }
